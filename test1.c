@@ -20,28 +20,73 @@ struct student
 
 FILE *fp;
 
+void startapp();
+void addbook();
+int login();
+void addbook();
+void menu();
 
-void addbook()
+int main()
 {
-	system("cls");
-	
-    fp = fopen("books.txt", "ab");
-
-    printf("Enter book id: ");
-    scanf("%d", &b.id);
-
-    printf("Enter book name: ");
-    scanf("%s", b.bookname);
-
-    printf("Enter author name: ");
-    scanf("%s", b.authorname);
-
-    printf("Book Added Successfully");
-
-    fwrite(&b, sizeof(b), 1, fp);
-    fclose(fp);
+	startapp();
+	return 0;
 }
 
+void startapp()
+{
+	int c;
+	while(1)
+	{
+		system("cls");
+		printf("========================================================\n");
+		printf("\n		LIBRARY MANAGEMENT SYSTEM\n");
+		printf("\n========================================================");
+		printf("\n\nPlease Login to continue...\n\n");
+		printf("1.  Login.\n");
+		printf("2.  Register.\n");
+		printf("3.  Exit.\n");
+		printf("__________________________________________________________\n\n");
+		printf("Enter your choice.\n");
+		scanf("%d", &c);
+		switch (c)
+		{
+			case 1:
+				login();
+				break;
+			case 2:
+				
+				break;
+			case 3:
+				system("cls");
+				exit(0);
+			default:
+				printf("Invalid choice");
+				exit(0);
+		}
+	}
+}
+
+int login()
+{
+	system("cls");
+	int y, a=5;
+	printf("Press Y\n");
+	scanf("%d", &y);
+	if(y==a)
+	{
+		printf("Authentication Successfull!\n");
+		printf("\nPress any key to continue.\n");
+		getch();
+		menu();
+	}
+	else
+	{
+		printf("**Incorrect username or password**\n");
+		printf("\nPress any key to try again.\n");
+		getch();
+		return 0;
+	}
+}
 
 void menu()
 {
@@ -85,70 +130,13 @@ void menu()
 	
 }
 
-int login()
+void addbook()
 {
-	system("cls");
-	char y, a='Y';
-	printf("Press Y\n");
-	getchar();
-	scanf("%c", &y);
-	if(y==a)
-	{
-		printf("Authentication Successfull!\n");
-		printf("\nPress any key to continue.\n");
-		getch();
-		menu();
-	}
-	else
-	{
-		printf("**Incorrect username or password**\n");
-		printf("\nPress any key to try again.\n");
-		getch();
-		return 0;
-	}
+	printf("Enter Book ID.\n");
+	scanf("%d", &b.id);
+	fflush(stdin);
+	printf("Enter the bookname.\n");
+	scanf("%s", &b.bookname);
+	
 }
-
-void startapp()
-{
-	int c;
-	while(1)
-	{
-		system("cls");
-		printf("========================================================\n");
-		printf("\n		LIBRARY MANAGEMENT SYSTEM\n");
-		printf("\n========================================================");
-		printf("\n\nPlease Login to continue...\n\n");
-		printf("1.  Login.\n");
-		printf("2.  Register.\n");
-		printf("3.  Exit.\n");
-		printf("__________________________________________________________\n\n");
-		printf("Enter your choice.\n");
-		scanf("%d", &c);
-		switch (c)
-		{
-			case 1:
-				login();
-				break;
-			case 2:
-				
-				break;
-			case 3:
-				system("cls");
-				exit(0);
-			default:
-				printf("Invalid choice");
-				exit(0);
-		}
-	}
-}
-
-int main()
-{
-	startapp();
-	return 0;
-}
-
-
-
-
 
