@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<string.h>
 #include<stdlib.h>
 
 struct books
@@ -85,12 +86,16 @@ void addbook()
 
     printf("Enter book id: ");
     scanf("%d", &b.id);
+    
+    while (getchar() != '\n');
 
     printf("Enter book name: ");
-    scanf("%s", b.bookname);
+    fgets(b.bookname, sizeof(b.bookname), stdin);
+    b.bookname[strcspn(b.bookname, "\n")] = '\0';
 
     printf("Enter author name: ");
-    scanf("%s", b.authorname);
+    fgets(b.authorname, sizeof(b.authorname), stdin);
+    b.authorname[strcspn(b.authorname, "\n")]='\0';
 
     printf("Book Added Successfully");
 
@@ -153,14 +158,14 @@ int login()
 	{
 		printf("Authentication Successfull!\n");
 		printf("\nPress any key to continue.\n");
-		getch();
+		getchar();
 		menu();
 	}
 	else
 	{
 		printf("**Incorrect username or password**\n");
 		printf("\nPress any key to try again.\n");
-		getch();
+		getchar();
 		return 0;
 	}
 }
